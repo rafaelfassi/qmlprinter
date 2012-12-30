@@ -21,7 +21,7 @@ Item {
             color: "blue"
 
             Text {
-                text: "Produto"
+                text: "Product"
                 anchors {
                     left: parent.left
                     leftMargin: 10
@@ -30,17 +30,17 @@ Item {
             }
 
             Text {
-                text: "Preço"
+                text: "Price"
                 width: 80
                 anchors {
-                    right: btnImprimir.left
+                    right: btnPrint.left
                     rightMargin: 20
                     verticalCenter: parent.verticalCenter
                 }
             }
 
             Button {
-                id: btnImprimir
+                id: btnPrint
                 objectName: "_NoPrint_" // Nao queremos que botoes sejam impressos.
                                         // poderiamos ter adicionado _NoPrint_ dentro do componente
                                         // Button para que nenhum botao seja impresso.
@@ -53,7 +53,7 @@ Item {
                     verticalCenter: parent.verticalCenter
                 }
                 onButtonClick: {
-                    myModel.print(false, root, "Nome do Relatório");
+                    myModel.print(false, root, "Report Name");
                 }
             }
 
@@ -68,7 +68,7 @@ Item {
                     verticalCenter: parent.verticalCenter
                 }
                 onButtonClick: {
-                    myModel.print(true, root, "Nome do Relatório");
+                    myModel.print(true, root, "Report Name");
                 }
             }
         }
@@ -79,41 +79,41 @@ Item {
             color: "grey"
 
             Text {
-                id: txtProduto
+                id: txtProduct
                 anchors {
                     left: parent.left
                     leftMargin: 10
                     verticalCenter: parent.verticalCenter
                 }
-                text: produto
+                text: product
             }
 
             Text {
-                id: txtPreco
+                id: txtPrice
                 width: 80
                 anchors {
-                    right: btnDetalhes.left
+                    right: btnDetails.left
                     rightMargin: 20
                     verticalCenter: parent.verticalCenter
                 }
-                text: preco
+                text: price
             }
 
             Button {
-                id: btnDetalhes
+                id: btnDetails
                 objectName: "_NoPrint_"
-                text: "Detalhes"
+                text: "Details"
                 anchors {
-                    right: btnComprar.left
+                    right: btnBuy.left
                     rightMargin: 20
                     verticalCenter: parent.verticalCenter
                 }
             }
 
             Button {
-                id: btnComprar
+                id: btnBuy
                 objectName: "_NoPrint_"
-                text: "Comprar"
+                text: "Buy"
                 anchors {
                     right: parent.right
                     rightMargin: 20

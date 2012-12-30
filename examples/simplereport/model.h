@@ -1,5 +1,4 @@
 #include <QAbstractListModel>
-#include <QStringList>
 #include <QDeclarativeItem>
 
  class Product

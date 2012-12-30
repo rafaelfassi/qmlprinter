@@ -1,8 +1,6 @@
-#include "model.h"
-#include <QDebug>
-#include "qmlprinter.h"
 #include <QListView>
-
+#include "model.h"
+#include "qmlprinter.h"
 
 
  Product::Product(const QString &p_productName, const QString &p_price)
@@ -24,8 +22,8 @@
      : QAbstractListModel(parent)
  {
      QHash<int, QByteArray> roles;
-     roles[ProductRole] = "produto";
-     roles[PriceRole] = "preco";
+     roles[ProductRole] = "product";
+     roles[PriceRole] = "price";
      setRoleNames(roles);
  }
 

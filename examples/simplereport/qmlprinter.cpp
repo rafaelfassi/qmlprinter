@@ -1,8 +1,6 @@
 #include <QPainter>
 #include "qmlprinter.h"
 
-#include <QDebug>
-
 QmlPrinter::QmlPrinter(QObject *obj)
     : QmlPrinterEngine(obj)
 {
@@ -24,7 +22,6 @@ QPicture QmlPrinter::firstHeader(qreal pageWidth)
     QRectF rectangle(0.0, 0.0, pageWidth, logo.height());
     painter.setPen(Qt::transparent);
     painter.drawRect(rectangle);
-    //painter.drawText(0,0, pageWidth, 30, Qt::AlignCenter, "Testeando");
 
     painter.end();
 
@@ -42,7 +39,7 @@ QPicture QmlPrinter::pageFooter(qreal pageWidth, int page, int count)
     painter.drawLine(0, 0, pageWidth, 0);
 
     painter.drawText(0,0, pageWidth - 5, 30, Qt::AlignRight,
-                     "P\341gina " + QString::number(page) + " de " + QString::number(count));
+                     "Page " + QString::number(page) + " of " + QString::number(count));
 
     QRectF rectangle(0.0, 0.0, pageWidth, 30.0);
     painter.setPen(Qt::transparent);
@@ -61,8 +58,7 @@ QPicture QmlPrinter::lastInfo(qreal pageWidth)
     painter.begin(&picture);
 
 
-    painter.drawText(5, 0, pageWidth, 20, Qt::AlignLeft,
-                     "Os valores apresentados neste relat\363rio est\343o sujeitos a mundan\347as di\341rias sem aviso pr\351vio");
+    painter.drawText(5, 0, pageWidth, 20, Qt::AlignLeft, "Last report information");
 
     QRectF rectangle(0.0, 0.0, pageWidth, 20.0);
     painter.setPen(Qt::transparent);

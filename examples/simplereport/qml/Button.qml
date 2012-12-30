@@ -12,7 +12,6 @@ Rectangle {
         id: buttonText
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        text: "Detalhes"
     }
 
     MouseArea {
