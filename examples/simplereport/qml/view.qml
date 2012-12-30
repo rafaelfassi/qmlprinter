@@ -6,8 +6,8 @@ Item {
 
     ListView {
         id: listview1
-        objectName: "_StartHeader:1_" // A partir deste ponto sempre que ocorrer uma quebra de pagina o
-                                      // objeto declarado como Header:1 sera o cabecalho da nova pagina.
+        objectName: "_ListView_StartHeader:1_" // A partir deste ponto sempre que ocorrer uma quebra de pagina o
+                                               // objeto declarado como Header:1 sera o cabecalho da nova pagina.
 
         anchors.fill: parent
 

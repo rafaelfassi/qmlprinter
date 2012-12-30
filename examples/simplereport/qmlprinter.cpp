@@ -8,6 +8,38 @@ QmlPrinter::QmlPrinter(QObject *obj)
     setCountPagesInFooter(true);
 }
 
+void QmlPrinter::preProcessItem( QDeclarativeItem * item )
+{
+
+    if( item->objectName().contains( "_ListView_" ) )
+    {
+        // Posicao atual do scroll que sera setada novamente ao final do parse.
+        m_undoList.append( UndoProperty( item, "contentY", item->property( "contentY" ) ) );
+
+        // Faz um scroll na lista inteira para criar os delegates.
+        int modelCount = item->property( "count" ).toInt();
+
+        for( int x = 0; x < modelCount; x++ )
+        {
+            QMetaObject::invokeMethod( item, "positionViewAtIndex",
+                                       Q_ARG( int, x ),
+                                       Q_ARG( int, 0 ) );
+        }
+
+    }
+
+}
+
+void QmlPrinter::parseDone()
+{
+    foreach( const UndoProperty & undo, m_undoList )
+    {
+        undo.item->setProperty( undo.propertyChanged.toAscii(), undo.oldPropertyValue );
+    }
+
+    m_undoList.clear();
+}
+
 QPicture QmlPrinter::firstHeader(qreal pageWidth)
 {
     QPicture picture;
