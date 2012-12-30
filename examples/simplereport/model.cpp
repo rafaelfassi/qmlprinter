@@ -5,57 +5,57 @@
 
 
 
- Animal::Animal(const QString &type, const QString &size)
-     : m_type(type), m_size(size)
+ Product::Product(const QString &p_productName, const QString &p_price)
+     : m_name(p_productName), m_price(p_price)
  {
  }
 
- QString Animal::type() const
+ QString Product::name() const
  {
-     return m_type;
+     return m_name;
  }
 
- QString Animal::size() const
+ QString Product::price() const
  {
-     return m_size;
+     return m_price;
  }
 
- AnimalModel::AnimalModel(QObject *parent)
+ ProductModel::ProductModel(QObject *parent)
      : QAbstractListModel(parent)
  {
      QHash<int, QByteArray> roles;
-     roles[TypeRole] = "produto";
-     roles[SizeRole] = "preco";
+     roles[ProductRole] = "produto";
+     roles[PriceRole] = "preco";
      setRoleNames(roles);
  }
 
- void AnimalModel::print(bool pdf, QDeclarativeItem *item, QString reportName)
+ void ProductModel::print(bool pdf, QDeclarativeItem *item, QString reportName)
  {
      QmlPrinter qmlPrinter(this);
      qmlPrinter.setReportName(reportName);
      qmlPrinter.print(pdf, item);
  }
 
- void AnimalModel::addAnimal(const Animal &animal)
+ void ProductModel::addProduct(const Product &p_product)
  {
      beginInsertRows(QModelIndex(), rowCount(), rowCount());
-     m_animals << animal;
+     m_products << p_product;
      endInsertRows();
      emit dataChange();
  }
 
- int AnimalModel::rowCount(const QModelIndex &) const {
-     return m_animals.count();
+ int ProductModel::rowCount(const QModelIndex &) const {
+     return m_products.count();
  }
 
- QVariant AnimalModel::data(const QModelIndex & index, int role) const {
-     if (index.row() < 0 || index.row() > m_animals.count())
+ QVariant ProductModel::data(const QModelIndex & index, int role) const {
+     if (index.row() < 0 || index.row() > m_products.count())
          return QVariant();
 
-     const Animal &animal = m_animals[index.row()];
-     if (role == TypeRole)
-         return animal.type();
-     else if (role == SizeRole)
-         return animal.size();
+     const Product &product = m_products[index.row()];
+     if (role == ProductRole)
+         return product.name();
+     else if (role == PriceRole)
+         return product.price();
      return QVariant();
  }

@@ -1,50 +1,36 @@
 #include <QAbstractListModel>
 #include <QStringList>
 #include <QDeclarativeItem>
-//#include <qdeclarative.h>
 
-#define declare(type, name) \
-private: type m_##name; \
-public: \
-void set##name(const type& var) \
-{\
-        m_##name = var;\
-}\
-\
-type name() \
-{\
-        return m_##name; \
-}\
-
- class Animal
+ class Product
  {
  public:
-     Animal(const QString &type, const QString &size);
+     Product(const QString &p_productName, const QString &p_price);
 
-     QString type() const;
-     QString size() const;
+     QString name() const;
+     QString price() const;
 
-     QString m_type;
-     QString m_size;
+     QString m_name;
+     QString m_price;
 
  };
 
- class AnimalModel : public QAbstractListModel
+ class ProductModel : public QAbstractListModel
  {
      Q_OBJECT
 
      Q_PROPERTY(int count READ rowCount NOTIFY dataChange)
  public:
-     enum AnimalRoles {
-         TypeRole = Qt::UserRole + 1,
-         SizeRole
+     enum ProductRoles {
+         ProductRole = Qt::UserRole + 1,
+         PriceRole
      };
 
-     AnimalModel(QObject *parent = 0);
+     ProductModel(QObject *parent = 0);
 
      Q_INVOKABLE void print(bool pdf, QDeclarativeItem *item, QString reportName);
 
-     void addAnimal(const Animal &animal);
+     void addProduct(const Product &p_product);
 
      int rowCount(const QModelIndex & parent = QModelIndex()) const;
 
@@ -54,7 +40,5 @@ type name() \
      void dataChange();
 
  private:
-     QList<Animal> m_animals;
-     declare(int, var1)
-     declare(int, var2)
+     QList<Product> m_products;
  };

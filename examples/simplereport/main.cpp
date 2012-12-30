@@ -8,11 +8,11 @@
  {
      QApplication app(argc, argv);
 
-     AnimalModel model;
+     ProductModel model;
 
      for(int x=0; x<50; x++)
      {
-        model.addAnimal(Animal("Algum produto da loja " + QString::number(x+1), "R$35,00"));
+        model.addProduct(Product("Algum produto da loja " + QString::number(x+1), "R$35,00"));
      }
 
      QDeclarativeView view;
