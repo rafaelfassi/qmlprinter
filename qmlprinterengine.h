@@ -141,6 +141,7 @@ struct QmlItem
 
     @author Rafael Fassi Lobao
     @date 14/07/2012
+    @version 1.0.1
 */
 class QmlPrinterEngine : public QObject
 {
