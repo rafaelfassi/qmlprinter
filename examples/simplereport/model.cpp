@@ -21,10 +21,14 @@
  ProductModel::ProductModel(QObject *parent)
      : QAbstractListModel(parent)
  {
+ }
+
+ QHash<int,QByteArray> ProductModel::roleNames() const
+ {
      QHash<int, QByteArray> roles;
      roles[ProductRole] = "product";
      roles[PriceRole] = "price";
-     setRoleNames(roles);
+     return roles;
  }
 
  void ProductModel::print(bool pdf, QDeclarativeItem *item, QString reportName)

@@ -1,10 +1,10 @@
 QmlPrinter
 ===========
 
-Version 1.0.1
+Version 2.0.1
 ==============
 
-Building the sources requires Qt 4.7 or 4.8
+Building the sources requires Qt 5.1 or greater
 =============================================
 
 License GPL version 3 or later

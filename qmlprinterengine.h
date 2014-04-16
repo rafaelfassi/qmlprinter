@@ -31,6 +31,7 @@
 #include <QPicture>
 #include <QList>
 #include <QHash>
+#include <QPrinter>
 
 /**
   @brief Macro para criar automaticamente os getters e setters das variaveis.

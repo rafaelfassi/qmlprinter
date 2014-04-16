@@ -34,7 +34,7 @@ void QmlPrinter::parseDone()
 {
     foreach( const UndoProperty & undo, m_undoList )
     {
-        undo.item->setProperty( undo.propertyChanged.toAscii(), undo.oldPropertyValue );
+        undo.item->setProperty( undo.propertyChanged.toLatin1(), undo.oldPropertyValue );
     }
 
     m_undoList.clear();

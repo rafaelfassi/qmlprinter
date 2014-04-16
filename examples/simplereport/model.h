@@ -35,6 +35,8 @@
 
      QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
+     virtual QHash<int,QByteArray> roleNames() const;
+
  signals:
      void dataChange();
 
